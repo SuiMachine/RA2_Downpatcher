@@ -29,7 +29,7 @@ namespace RA2_Downpatcher
 		{
 			if (!verificationInstance.VerifyOriginFiles(downpatcherForm.OriginPath))
 			{
-				downpatcherForm.Restart();
+				downpatcherForm.Restart(false);
 				return;
 			}
 
@@ -98,7 +98,7 @@ namespace RA2_Downpatcher
 			if (File.Exists(_7zipPath))
 				File.Delete(_7zipPath);
 			downpatcherForm.AppendLog($"We are done!");
-			downpatcherForm.UpdateProgress(0);
+			downpatcherForm.Restart(true);
 		}
 
 		private void ApplyFinalPatches(string folder)

@@ -13,6 +13,7 @@ namespace RA2_Downpatcher
 		private DownpatcherThread downpatcher;
 		private delegate void UpdateProgressDelegate(int value);
 		private delegate void AppendLogDelegate(string text);
+		private delegate void RestartDelegate(bool success);
 
 		public string OriginPath { get; private set; }
 		public string DownpatchPath { get; private set; }
@@ -32,11 +33,6 @@ namespace RA2_Downpatcher
 				TB_OriginCNCLocation.Text = installedOriginPath.GetValue("Install Dir", "").ToString();
 				TB_DownpatchLocation.Text = Path.Combine(Path.GetPathRoot(TB_OriginCNCLocation.Text), "Westwood", "Red Alert 2 - Unpatched");
 			}
-		}
-
-		internal void Restart()
-		{
-			throw new NotImplementedException();
 		}
 
 		private void Btn_BrowseCnCOriginLocation_Click(object sender, EventArgs e)
@@ -120,6 +116,15 @@ namespace RA2_Downpatcher
 
 			if (!Directory.Exists(DownpatchPath))
 				Directory.CreateDirectory(DownpatchPath);
+			else
+			{
+				var files = Directory.GetFiles(DownpatchPath, "*.*", SearchOption.AllDirectories);
+				if(files.Length > 0)
+				{
+					MessageBox.Show("Destination folder is not empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					return;
+				}
+			}
 
 			if (downpatcher != null)
 				throw new Exception("This should be null!");
@@ -150,6 +155,25 @@ namespace RA2_Downpatcher
 			else
 			{
 				downpatchingProgressBar.Value = precent;
+			}
+		}
+
+		internal void Restart(bool success)
+		{
+			if(this.InvokeRequired)
+			{
+				this.Invoke(new RestartDelegate(Restart), new object[] { success });
+			}
+			else
+			{
+				downpatchingProgressBar.Value = 0;
+				if (!success)
+				{
+					Btn_Start.Enabled = true;
+				}
+
+				if (this.downpatcher != null)
+					this.downpatcher = null;
 			}
 		}
 

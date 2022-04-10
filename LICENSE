@@ -1,3 +1,11 @@
+Some elements that are bundled with the downpatcher are distributed under different licences.
+The these are:
+- 7-zip (7za) redistributed under GNU LGPL licence - https://www.7-zip.org/license.txt
+- Xdelta3 redistributed under GPL licence - https://github.com/jmacd/xdelta-gpl
+- Dxwnd - https://sourceforge.net/projects/dxwnd/
+
+The rest of the fix is distributed under MIT licence.
+
 MIT License
 
 Copyright (c) 2022 SuiMachine
