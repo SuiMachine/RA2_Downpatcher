@@ -2,7 +2,7 @@ Some elements that are bundled with the downpatcher are distributed under differ
 The these are:
 - 7-zip (7za) redistributed under GNU LGPL licence - https://www.7-zip.org/license.txt
 - Xdelta3 redistributed under GPL licence - https://github.com/jmacd/xdelta-gpl
-- Dxwnd - https://sourceforge.net/projects/dxwnd/
+- Custom fork of CnC Draw redistributed under MIT Licence - https://github.com/CnCNet/cnc-ddraw
 
 The rest of the fix is distributed under MIT licence.
 
