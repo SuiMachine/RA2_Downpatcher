@@ -91,7 +91,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\Fixes.7z" />
+    <None Include="Resources\cncdraw_content.7z" />
     <None Include="Resources\Xdelta.7z" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +113,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ddraw_original.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ddraw_broken.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

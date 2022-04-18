@@ -73,9 +73,29 @@ namespace RA2_Downpatcher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Fixes {
+        internal static byte[] cncdraw_content {
             get {
-                object obj = ResourceManager.GetObject("Fixes", resourceCulture);
+                object obj = ResourceManager.GetObject("cncdraw_content", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ddraw_broken {
+            get {
+                object obj = ResourceManager.GetObject("ddraw_broken", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ddraw_original {
+            get {
+                object obj = ResourceManager.GetObject("ddraw_original", resourceCulture);
                 return ((byte[])(obj));
             }
         }

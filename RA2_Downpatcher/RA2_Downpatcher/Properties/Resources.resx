@@ -118,8 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Fixes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Fixes.7z;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="cncdraw_content" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cncdraw_content.7z;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ddraw_broken" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ddraw_broken.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ddraw_original" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ddraw_original.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Xdelta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Xdelta.7z;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

@@ -12,11 +12,13 @@ namespace RA2_Downpatcher
 		Verification verificationInstance;
 		RA2_Downpatcher downpatcherForm;
 		Thread patchingTask;
+		bool customCnCDraw = false;
 
-		public DownpatcherThread(RA2_Downpatcher downpatcherForm, Verification verificationInstance)
+		public DownpatcherThread(RA2_Downpatcher downpatcherForm, Verification verificationInstance, bool customCnCDraw)
 		{
 			this.downpatcherForm = downpatcherForm;
 			this.verificationInstance = verificationInstance;
+			this.customCnCDraw = customCnCDraw;
 		}
 
 		internal void Start()
@@ -108,11 +110,17 @@ namespace RA2_Downpatcher
 				File.Delete(Path.Combine(folder, "ra2.ini"));
 
 			var fixesDest = Path.Combine(folder, "fixes.7z");
-			File.WriteAllBytes(fixesDest, Resources.Fixes);
+			File.WriteAllBytes(fixesDest, Resources.cncdraw_content);
 
 			RunProcessAndRedirectOutput(_7zipPath, $"x \"{fixesDest}\"");
 			if (File.Exists(fixesDest))
 				File.Delete(fixesDest);
+
+			var ddrawDestination = Path.Combine(folder, "ddraw.dll");
+			if(customCnCDraw)
+				File.WriteAllBytes(ddrawDestination, Resources.ddraw_broken);
+			else
+				File.WriteAllBytes(ddrawDestination, Resources.ddraw_original);
 
 			downpatcherForm.AppendLog($"Setting registry path to a unpatched version...");
 			var ra2Path = Path.Combine(folder, "Ra2.exe");

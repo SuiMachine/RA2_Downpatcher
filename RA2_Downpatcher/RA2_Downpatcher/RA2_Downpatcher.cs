@@ -14,6 +14,7 @@ namespace RA2_Downpatcher
 		private delegate void UpdateProgressDelegate(int value);
 		private delegate void AppendLogDelegate(string text);
 		private delegate void RestartDelegate(bool success);
+		private ToolTip tooltip;
 
 		public string OriginPath { get; private set; }
 		public string DownpatchPath { get; private set; }
@@ -33,6 +34,11 @@ namespace RA2_Downpatcher
 				TB_OriginCNCLocation.Text = installedOriginPath.GetValue("Install Dir", "").ToString();
 				TB_DownpatchLocation.Text = Path.Combine(Path.GetPathRoot(TB_OriginCNCLocation.Text), "Westwood", "Red Alert 2 - Unpatched");
 			}
+			tooltip = new ToolTip() { AutoPopDelay = 10000, InitialDelay = 1000, ReshowDelay = 500, ShowAlways = true, IsBalloon = true };
+
+			tooltip.SetToolTip(this.Radial_CustomCnCDraw, "A custom fork of CnC Draw - allows for using build anywhere glitch by alt+tabbing from the game, but is less stable.");
+			tooltip.SetToolTip(this.Radial_OriginalCnCDraw, "Original build of CnC Draw - using alt+tab for build anywhere glitch is impossible, but the game continues running in the background using it and doesn't crash when using alt+tab. Using other forms of build anywhere glitch is still possible.");
+
 		}
 
 		private void Btn_BrowseCnCOriginLocation_Click(object sender, EventArgs e)
@@ -129,7 +135,9 @@ namespace RA2_Downpatcher
 			if (downpatcher != null)
 				throw new Exception("This should be null!");
 			Btn_Start.Enabled = false;
-			downpatcher = new DownpatcherThread(this, verification);
+			Radial_CustomCnCDraw.Enabled = false;
+			Radial_OriginalCnCDraw.Enabled = false;
+			downpatcher = new DownpatcherThread(this, verification, Radial_CustomCnCDraw.Checked);
 			downpatcher.Start();
 		}
 
@@ -170,6 +178,8 @@ namespace RA2_Downpatcher
 				if (!success)
 				{
 					Btn_Start.Enabled = true;
+					Radial_OriginalCnCDraw.Enabled = true;
+					Radial_CustomCnCDraw.Enabled = true;
 				}
 
 				if (this.downpatcher != null)
